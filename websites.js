@@ -4,13 +4,19 @@ const fs = require("fs");
 // Adding a website to the list
 const addWebsite = (name, url, description, genre, date, time) => {
   // Capitalize
-  name = name.charAt(0).toUpperCase() + name.slice(1);
   description = description.charAt(0).toUpperCase() + description.slice(1);
 
-  // Capitalize first letter of each word in a string
+  // Capitalize first letter of each word of website name
+  const splitName = name.split(" ");
+  const splitNameCapitalize = splitName.map((a) => {
+    return a.charAt(0).toUpperCase() + a.slice(1).toLowerCase();
+  });
+  name = splitNameCapitalize.join(" ");
+
+  // Capitalize first letter of each word of website genre
   const splitGenre = genre.split(" ");
   const splitGenreCapitalize = splitGenre.map((a) => {
-    return a.charAt(0).toUpperCase() + a.slice(1);
+    return a.charAt(0).toUpperCase() + a.slice(1).toLowerCase();
   });
   genre = splitGenreCapitalize.join(" ");
 
