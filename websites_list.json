@@ -1,27 +1,25 @@
 [
   {
+    "name": "Codepen",
+    "url": "https://codepen.io/",
+    "description": "It is an online code editor for web development. It supports html, css, javascript, react, node, sass, scss, bootstrap, jquery and more",
+    "genre": "Code Editor",
+    "date": "2022-06-12 07:08:08"
+  },
+  {
+    "name": "Submarine Cable Map",
+    "url": "https://submarinecablemap.com/",
+    "description": "TeleGeography's comprehensive and regularly updated interactive map of the world's major submarine cable systems and landing stations.",
+    "genre": "General",
+    "date": "2022-06-12 06:54:45"
+  },
+  {
     "name": "Key Br",
     "url": "https://keybr.com/",
     "description": "This web application will help you to learn touch typing which means typing through muscle memory without using your eyesight to find the keys. It can improve your typing speed and accuracy dramatically. The opposite is hunt and peck typing, a method of typing in which you look at the keyboard instead of the screen, and use only the index fingers.",
     "genre": "Typing",
     "date": "12/6/2022",
     "time": "11:25:01 am"
-  },
-  {
-    "name": "Submarine Cable Map",
-    "url": "https://submarinecablemap.com/",
-    "description": "TeleGeography's comprehensive and regularly updated interactive map of the world's major submarine cable systems and landing stations.",
-    "genre": "Internet Cable Map",
-    "date": "12/6/2022",
-    "time": "11:19:02 am"
-  },
-  {
-    "name": "Codepen",
-    "url": "https://codepen.io/",
-    "description": "It is an online code editor for web development. It supports html, css, javascript, react, node, sass, scss, bootstrap, jquery and more",
-    "genre": "Web Development",
-    "date": "12/6/2022",
-    "time": "11:12:25 am"
   },
   {
     "name": "Techcrunch",

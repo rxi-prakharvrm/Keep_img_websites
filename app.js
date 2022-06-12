@@ -2,7 +2,7 @@ const yargs = require("yargs");
 const websites = require("./websites");
 
 // command for adding a website into the websites_list.json
-var date = new Date();
+var date = new Date().toISOString().slice(0, 19).replace("T", " ");
 
 yargs.command({
   command: "add",
@@ -30,8 +30,7 @@ yargs.command({
       argv.url,
       argv.description,
       argv.genre,
-      date.toLocaleDateString(),
-      date.toLocaleTimeString()
+      date
     );
   },
 });

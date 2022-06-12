@@ -1,8 +1,21 @@
 const chalk = require("chalk");
 const fs = require("fs");
+const mysql = require("mysql");
+
+// Creating a connection for mysql database
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "password",
+  database: "keep_imp_websites",
+});
+
+con.connect((err) => {
+  if (err) throw err;
+});
 
 // Adding a website to the list
-const addWebsite = (name, url, description, genre, date, time) => {
+const addWebsite = (name, url, description, genre, date) => {
   // Capitalize
   description = description.charAt(0).toUpperCase() + description.slice(1);
 
@@ -23,7 +36,6 @@ const addWebsite = (name, url, description, genre, date, time) => {
   // Lower Case
   url = url.toLowerCase();
 
-  console.log(name);
   const websites = loadWebsites();
   const duplicateWebsite = websites.find(
     (website) => website.name.toUpperCase() === name.toUpperCase()
@@ -37,11 +49,21 @@ const addWebsite = (name, url, description, genre, date, time) => {
       description,
       genre,
       date,
-      time,
     });
+
+    // Insert website data into database
+    const sql = `INSERT INTO keep_imp_website VALUES ("${name}", "${url}", "${description}", "${genre}", "${date}")`;
+    con.query(sql, (err) => {
+      if (err) throw err;
+      console.log(
+        chalk.green("Website is added in the database successfully!")
+      );
+    });
+    //End
+
     console.log(chalk.bgGreen("Website Added"));
   } else {
-    console.log(chalk.red.inverse("Website url Already registered!"));
+    console.log(chalk.red.inverse("This Website Already registered!"));
   }
   saveWebsites(websites);
 };
@@ -54,6 +76,15 @@ const removeWebsite = (name) => {
   });
 
   if (websites.length > websitesToKeep.length) {
+    // Removing the website from the database
+    const sql = `DELETE FROM keep_imp_website WHERE keep_imp_website.NAME = "${name}"`;
+    con.query(sql, (err) => {
+      if (err) throw err;
+      console.log(
+        chalk.red("Website is deleted from the database successfully!")
+      );
+    });
+
     console.log(chalk.green.inverse("Website Removed"));
     saveWebsites(websitesToKeep);
   } else {
@@ -68,13 +99,8 @@ const listWebsites = () => {
   console.log(chalk.yellow.bold("Your websites ----------"));
   websites.forEach((website) => {
     console.log(
-      chalk.blue(
-        counter++ +
-          "." +
-          website.name +
-          " (" +
-          chalk.greenBright(website.url) +
-          ")"
+      chalk.green(
+        counter++ + "." + website.name + " (" + chalk.blue(website.url) + ")"
       )
     );
   });
