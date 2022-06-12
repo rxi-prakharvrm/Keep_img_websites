@@ -1,9 +1,14 @@
 const yargs = require("yargs");
 const websites = require("./websites");
 
-// command for adding a website into the websites_list.json
-var date = new Date().toISOString().slice(0, 19).replace("T", " ");
+// Creating a date variable for mysql
+var date = new Date().toLocaleDateString();
+var splitDate = date.split("/");
+var reverseSplitDate = splitDate.reverse();
+date = reverseSplitDate.join("-");
+// console.log(date);
 
+// command for adding a website into the websites_list.json
 yargs.command({
   command: "add",
   describe: "Add Website",

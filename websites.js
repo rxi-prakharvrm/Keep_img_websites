@@ -96,33 +96,76 @@ const removeWebsite = (name) => {
 const listWebsites = () => {
   const websites = loadWebsites();
   var counter = 1;
-  console.log(chalk.yellow.bold("Your websites ----------"));
-  websites.forEach((website) => {
-    console.log(
-      chalk.green(
-        counter++ + "." + website.name + " (" + chalk.blue(website.url) + ")"
-      )
-    );
+
+  // Listing all the websites extracting from database
+  const sql = `SELECT NAME, URL FROM keep_imp_website`;
+
+  con.query(sql, (err, websitesFromDatabase) => {
+    if (err) throw err;
+    console.log(chalk.yellow.bold("Your websites ----------"));
+    websitesFromDatabase.forEach((websiteFromDatabase) => {
+      console.log(
+        counter++ +
+          ". " +
+          chalk.greenBright(websiteFromDatabase.NAME) +
+          " - " +
+          chalk.magenta(websiteFromDatabase.URL)
+      );
+    });
   });
+
+  // console.log(chalk.yellow.bold("Your websites ----------"));
+  // websites.forEach((website) => {
+  //   console.log(
+  //     chalk.green(
+  //       counter++ + "." + website.name + " (" + chalk.blue(website.url) + ")"
+  //     )
+  //   );
+  // });
 };
 
 // Searching website
 const searchWebsite = (name) => {
   const websites = loadWebsites();
-  const foundWebsite = websites.find(
-    (website) => website.name.toUpperCase() === name.toUpperCase()
-  );
-  if (foundWebsite) {
-    console.log(chalk.yellow.bold("You website details ----------"));
-    console.log("Name: " + chalk.blue(foundWebsite.name));
-    console.log("URL: " + chalk.blue(foundWebsite.url));
-    console.log("Description: " + chalk.blue(foundWebsite.description));
-    console.log("Genre: " + chalk.blue(foundWebsite.genre));
-    console.log("Date: " + chalk.blue(foundWebsite.date));
-    console.log("Time: " + chalk.blue(foundWebsite.time));
-  } else {
-    console.log(chalk.red.inverse("Website not found!"));
-  }
+
+  // Reading website from the database
+
+  const sql = `SELECT * FROM keep_imp_website`;
+  con.query(sql, (err, websiteInfoFromDatabase) => {
+    if (err) throw err;
+    const matchedWebsite = websiteInfoFromDatabase.find(
+      (webInfoFromDatabase) => {
+        return webInfoFromDatabase.NAME.toUpperCase() === name.toUpperCase();
+      }
+    );
+
+    if (matchedWebsite) {
+      console.log(
+        chalk.yellow.bold.underline("You website details ----------")
+      );
+      console.log("Name: " + chalk.green(matchedWebsite.NAME));
+      console.log("URL: " + chalk.green(matchedWebsite.URL));
+      console.log("Description: " + chalk.green(matchedWebsite.DESCRIPTION));
+      console.log("Genre: " + chalk.green(matchedWebsite.GENRE));
+      console.log("Date: " + chalk.green(matchedWebsite.DATE).slice(0, 20));
+    }
+  });
+
+  // const foundWebsite = websites.find(
+  //   (website) => website.name.toUpperCase() === name.toUpperCase()
+  // );
+
+  // if (foundWebsite) {
+  // console.log(chalk.yellow.bold("You website details ----------"));
+  // console.log("Name: " + chalk.blue(foundWebsite.name));
+  // console.log("URL: " + chalk.blue(foundWebsite.url));
+  // console.log("Description: " + chalk.blue(foundWebsite.description));
+  // console.log("Genre: " + chalk.blue(foundWebsite.genre));
+  // console.log("Date: " + chalk.blue(foundWebsite.date));
+  // console.log("Time: " + chalk.blue(foundWebsite.time));
+  // } else {
+  //   console.log(chalk.red.inverse("Website not found!"));
+  // }
 };
 
 const saveWebsites = (websites) =>
