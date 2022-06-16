@@ -1,5 +1,61 @@
 [
   {
+    "name": "Unicode Table",
+    "url": "https://www.unicode-table.com",
+    "description": "This is the documentation for all the unicode characters",
+    "genre": "Unicode Table",
+    "date": "2022-6-16"
+  },
+  {
+    "name": "Emmet Cheat-sheet",
+    "url": "https://docs.emmet.io/cheat-sheet/",
+    "description": "VS Code emmet cheat-sheet",
+    "genre": "Cheat Sheet",
+    "date": "2022-6-16"
+  },
+  {
+    "name": "Devdocs",
+    "url": "https://www.devdocs.io",
+    "description": "DevDocs combines multiple API documentations in a fast, organized, and searchable interface.",
+    "genre": "Free Technologies Web Docs",
+    "date": "2022-6-16"
+  },
+  {
+    "name": "Mdn",
+    "url": "https://developer.mozilla.org/en-us/",
+    "description": "The MDN Web Docs site provides information about Open Web technologies including HTML, CSS, and APIs for both Web sites and progressive web apps.",
+    "genre": "Free Technologies Web Docs",
+    "date": "2022-6-16"
+  },
+  {
+    "name": "Gutenberg",
+    "url": "https://www.gutenberg.org",
+    "description": "Gutenberg is a library of over 60,000 free eBooks",
+    "genre": "Free Ebooks",
+    "date": "2022-6-16"
+  },
+  {
+    "name": "Submarine Cable Map",
+    "url": "https://www.submarinecablemap.com",
+    "description": "A free resourse to see the underground internet cables across the world",
+    "genre": "Underground Internet Cables Map",
+    "date": "2022-6-16"
+  },
+  {
+    "name": "Codepen",
+    "url": "https://www.codepen.io",
+    "description": "An online code editor for writing html, css, js, react and more",
+    "genre": "Online Code Editor",
+    "date": "2022-6-16"
+  },
+  {
+    "name": "Techcrunch",
+    "url": "https://www.techcrunch.com",
+    "description": "A Tech news blog for daily technical updates",
+    "genre": "Tech News",
+    "date": "2022-6-16"
+  },
+  {
     "name": "Key Br",
     "url": "https://keybr.com",
     "description": "This web application will help you to learn touch typing which means typing through muscle memory without using your eyesight to find the keys. It can improve your typing speed and accuracy dramatically. The opposite is hunt and peck typing, a method of typing in which you look at the keyboard instead of the screen, and use only the index fingers.",

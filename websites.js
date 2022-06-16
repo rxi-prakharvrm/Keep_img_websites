@@ -98,7 +98,7 @@ const listWebsites = () => {
   var counter = 1;
 
   // Listing all the websites extracting from database
-  const sql = `SELECT NAME, URL FROM keep_imp_website`;
+  const sql = `SELECT NAME, URL, GENRE FROM keep_imp_website`;
 
   con.query(sql, (err, websitesFromDatabase) => {
     if (err) throw err;
@@ -109,7 +109,9 @@ const listWebsites = () => {
           ". " +
           chalk.greenBright(websiteFromDatabase.NAME) +
           " - " +
-          chalk.magenta(websiteFromDatabase.URL)
+          chalk.magenta(websiteFromDatabase.URL) +
+          " - " +
+          chalk.green(websiteFromDatabase.GENRE)
       );
     });
   });
